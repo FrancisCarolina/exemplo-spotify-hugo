@@ -4,36 +4,45 @@ import ifpr.pgua.eic.colecaomusicas.App;
 import javafx.fxml.FXML;
 
 public class Principal {
-    
 
     @FXML
-    private void cadastrarGenero(){
+    private void cadastrarGenero() {
         App.pushScreen("CADASTROGENERO");
     }
 
     @FXML
-    private void cadastrarArtista(){
+    private void cadastrarArtista() {
         App.pushScreen("CADASTROARTISTA");
     }
 
     @FXML
-    private void listarGeneros(){
+    private void listarGeneros() {
         App.pushScreen("LISTARGENEROS");
     }
 
     @FXML
-    private void listarArtistas(){
+    private void listarArtistas() {
         App.pushScreen("LISTARARTISTAS");
     }
 
-        @FXML
-    private void cadastrarMusica(){
+    @FXML
+    private void cadastrarMusica() {
         App.pushScreen("CADASTRARMUSICA");
     }
 
     @FXML
-    private void listarMusicas(){
+    private void listarMusicas() {
         App.pushScreen("LISTARMUSICAS");
+    }
+
+    @FXML
+    private void cadastrarPlaylist() {
+        App.pushScreen("CADASTRARPLAYLIST");
+    }
+
+    @FXML
+    private void listarPlaylist() {
+        App.pushScreen("LISTARPLAYLIST");
     }
 
 }
