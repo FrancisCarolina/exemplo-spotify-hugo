@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx" 
-      xmlns:fx="http://javafx.com/fxml" 
-      prefHeight="480" prefWidth="640"
-      fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal"
-      >
+<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
 
     <padding>
-        <Insets topRightBottomLeft="20"/>
+        <Insets topRightBottomLeft="20" />
     </padding>
 
     <left>
-        <VBox spacing="5.0" alignment="TOP_CENTER">
+        <VBox alignment="TOP_CENTER" spacing="5.0">
             <padding>
-                <Insets topRightBottomLeft="20"/>
+                <Insets topRightBottomLeft="20" />
             </padding>
-            <Button text="Cadastrar Gênero" onAction="#cadastrarGenero"  prefWidth="200"/>
-            <Button text="Listar Gêneros" onAction="#listarGeneros" prefWidth="200"/>
-            <Button text="Cadastrar Artista" onAction="#cadastrarArtista"  prefWidth="200"/>
-            <Button text="Listar Artistas" onAction="#listarArtistas" prefWidth="200"/>
-            <Button text="Cadastrar Música" onAction="#cadastrarMusica"  prefWidth="200"/>
-            <Button text="Listar Músicas" onAction="#listarMusicas"  prefWidth="200"/>
+            <Button onAction="#cadastrarGenero" prefWidth="200" text="Cadastrar Gênero" />
+            <Button onAction="#listarGeneros" prefWidth="200" text="Listar Gêneros" />
+            <Button onAction="#cadastrarArtista" prefWidth="200" text="Cadastrar Artista" />
+            <Button onAction="#listarArtistas" prefWidth="200" text="Listar Artistas" />
+            <Button onAction="#cadastrarMusica" prefWidth="200" text="Cadastrar Música" />
+            <Button onAction="#listarMusicas" prefWidth="200" text="Listar Músicas" />
+         <Button onAction="#cadastrarPlaylist" prefWidth="200" text="Cadastrar Playlist" />
 
         </VBox>
     </left>
