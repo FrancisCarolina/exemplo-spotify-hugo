@@ -13,14 +13,12 @@ import ifpr.pgua.eic.colecaomusicas.models.Genero;
 import ifpr.pgua.eic.colecaomusicas.models.Musica;
 
 public class RepositorioMusicas {
-    
 
     private MusicaDAO dao;
     private ArtistaDAO artistaDAO;
     private GeneroDAO generoDAO;
 
     public RepositorioMusicas(MusicaDAO dao, ArtistaDAO artistaDAO, GeneroDAO generoDAO) {
-
         this.dao = dao;
         this.artistaDAO = artistaDAO;
         this.generoDAO = generoDAO;

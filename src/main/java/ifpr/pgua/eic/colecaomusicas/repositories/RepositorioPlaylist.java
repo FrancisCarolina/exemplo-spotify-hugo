@@ -24,4 +24,8 @@ public class RepositorioPlaylist {
         return dao.criar(pl);
     }
 
+    public Resultado listarPlaylists(){
+        return dao.listar();
+    }
+
 }

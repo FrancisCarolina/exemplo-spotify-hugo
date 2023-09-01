@@ -37,4 +37,9 @@ public class Playlist {
     public void setMusicas(ArrayList<Musica> musicas) {
         this.musicas = musicas;
     }
+
+    @Override
+    public String toString() {
+        return "Playlist [" + nome + "]";
+    }
 }

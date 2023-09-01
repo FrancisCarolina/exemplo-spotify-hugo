@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
+<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
 
     <padding>
         <Insets topRightBottomLeft="20" />
@@ -23,6 +23,7 @@
             <Button onAction="#cadastrarMusica" prefWidth="200" text="Cadastrar Música" />
             <Button onAction="#listarMusicas" prefWidth="200" text="Listar Músicas" />
          <Button onAction="#cadastrarPlaylist" prefWidth="200" text="Cadastrar Playlist" />
+         <Button onAction="#listarPlaylist" prefWidth="200" text="Listar Playlist" />
 
         </VBox>
     </left>

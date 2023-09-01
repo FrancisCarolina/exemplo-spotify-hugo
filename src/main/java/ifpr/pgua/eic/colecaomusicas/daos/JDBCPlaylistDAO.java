@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.github.hugoperlin.results.Resultado;
@@ -15,7 +16,7 @@ import ifpr.pgua.eic.colecaomusicas.models.Playlist;
 public class JDBCPlaylistDAO implements PlaylistDAO{
     private static final String INSERTPL = "INSERT INTO playlist(nome) VALUES (?)";
     private static final String INSERTPLMSC = "INSERT INTO playlist_musicas(musicaId, playlistId) VALUES (?,?)";
-    //private static final String SELECTSQLPL = "SELECT * FROM playlist";
+    private static final String SELECTSQLPL = "SELECT * FROM playlist";
     //private static final String SELECTSQLPLMSC = "SELECT * FROM playlist_musicas";
 
     private FabricaConexoes fabrica;
@@ -87,8 +88,30 @@ public class JDBCPlaylistDAO implements PlaylistDAO{
 
     @Override
     public Resultado listar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listar'");
+        try {
+            Connection con = fabrica.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement(SELECTSQLPL);
+
+            ResultSet rs = pstm.executeQuery();
+
+            ArrayList<Playlist> lista = new ArrayList<>();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+
+                Playlist pl = new Playlist(id, nome,null);
+                lista.add(pl);
+            }
+            rs.close();
+            pstm.close();
+            con.close();
+
+            return Resultado.sucesso("Playlist listada!", lista);
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
