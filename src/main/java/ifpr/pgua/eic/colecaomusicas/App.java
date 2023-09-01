@@ -14,10 +14,13 @@ import ifpr.pgua.eic.colecaomusicas.daos.GeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCArtistaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCGeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCMusicaDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCPlaylistDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.MusicaDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.PlaylistDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioArtistas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioGeneros;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioMusicas;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPlaylist;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
 
@@ -34,6 +37,9 @@ public class App extends BaseAppNavigator {
 
     private MusicaDAO musicaDAO = new JDBCMusicaDAO(FabricaConexoes.getInstance());
     private RepositorioMusicas repositorioMusicas = new RepositorioMusicas(musicaDAO, artistaDAO, generoDAO);
+
+    private PlaylistDAO playlistDAO = new JDBCPlaylistDAO(FabricaConexoes.getInstance());
+    private RepositorioPlaylist repositorioPlaylist = new RepositorioPlaylist(playlistDAO);
 
     public static void main(String[] args) {
         launch();
@@ -82,7 +88,7 @@ public class App extends BaseAppNavigator {
         registraTela("CADASTRARPLAYLIST",
                 new ScreenRegistryFXML(App.class,
                         "cadastrar_playlist.fxml",
-                        o -> new CadastroPlaylist(repositorioMusicas)));
+                        o -> new CadastroPlaylist(repositorioMusicas, repositorioPlaylist)));
     }
 
 }
