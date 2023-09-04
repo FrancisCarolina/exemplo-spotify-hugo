@@ -14,6 +14,8 @@ import ifpr.pgua.eic.colecaomusicas.models.Musica;
 public class JDBCMusicaDAO implements MusicaDAO{
     private static final String INSERTSQL = "INSERT INTO musicas(nome,duracao,anoLancamento,artistaId,generoId) VALUES (?,?,?,?,?)";
     private static final String SELECTSQL = "SELECT * FROM musicas";
+    
+    private static final String SELECTSQLPLMSC = "SELECT m.id, m.nome, m.duracao, m.anoLancamento, m.artistaId, m.generoId FROM playlist_musicas pl, musicas m WHERE pl.playlistId=? and pl.musicaId = m.id";
 
     private FabricaConexoes fabrica;
 
@@ -79,6 +81,32 @@ public class JDBCMusicaDAO implements MusicaDAO{
             return Resultado.erro(e.getMessage());
         }
     
+    }
+    @Override
+    public Resultado buscarMusicasPlaylist(int playlistId){
+        try (Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement(SELECTSQLPLMSC);
+            pstm.setInt(1, playlistId);
+
+            ResultSet rs = pstm.executeQuery();
+
+            ArrayList<Musica> lista = new ArrayList<>();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                int duracao = rs.getInt("duracao");
+                int anoLancamento = rs.getInt("anoLancamento");
+
+                Musica musica = new Musica(id,nome, anoLancamento, duracao, null, null);
+
+                lista.add(musica);
+            }
+
+            return Resultado.sucesso("Musicas listadas", lista);
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override

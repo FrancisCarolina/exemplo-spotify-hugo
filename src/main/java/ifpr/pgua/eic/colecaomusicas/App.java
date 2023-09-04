@@ -40,7 +40,7 @@ public class App extends BaseAppNavigator {
     private RepositorioMusicas repositorioMusicas = new RepositorioMusicas(musicaDAO, artistaDAO, generoDAO);
 
     private PlaylistDAO playlistDAO = new JDBCPlaylistDAO(FabricaConexoes.getInstance());
-    private RepositorioPlaylist repositorioPlaylist = new RepositorioPlaylist(playlistDAO);
+    private RepositorioPlaylist repositorioPlaylist = new RepositorioPlaylist(playlistDAO, musicaDAO, artistaDAO, generoDAO);
 
     public static void main(String[] args) {
         launch();

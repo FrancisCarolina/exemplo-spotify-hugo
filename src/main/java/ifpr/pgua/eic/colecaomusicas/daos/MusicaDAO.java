@@ -9,4 +9,5 @@ public interface MusicaDAO {
     Resultado listar();
     Resultado atualizar(int id, Musica nova);
     Resultado deletar(int id);
+    Resultado buscarMusicasPlaylist(int playlistId);
 }

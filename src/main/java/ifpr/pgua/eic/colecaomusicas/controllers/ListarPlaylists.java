@@ -31,7 +31,9 @@ public class ListarPlaylists  implements Initializable{
 
     @FXML
     void mostrarMusicas() {
-
+        listaMusicas.getItems().clear();
+        Playlist pl = listaPlaylists.getSelectionModel().getSelectedItem();
+        listaMusicas.getItems().addAll(pl.getMusicas());
     }
 
     @FXML
